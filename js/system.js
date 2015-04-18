@@ -58,8 +58,6 @@ function drawUserOptions() {
 
   var ctx = system.canvas.getContext("2d");
 
-  console.log(creatureLocs);
-
   for(idx in creatureLocs) {
     var loc = creatureLocs[idx];
     ctx.rect(system.cellSize*loc.x,system.cellSize*loc.y,system.cellSize,system.cellSize);
