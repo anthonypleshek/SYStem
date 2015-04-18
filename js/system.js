@@ -42,7 +42,7 @@ function initialize() {
 
   terra.registerCreature({
     type: 'creature1',
-    color: creatureColor,
+    color: creatureColor1,
     maxEnergy: 70,
     initialEnergy: 20,
     size: 12
@@ -50,7 +50,7 @@ function initialize() {
 
   terra.registerCreature({
     type: 'creature2',
-    color: creatureColor,
+    color: creatureColor2,
     maxEnergy: 20,
     initialEnergy: 7,
     size: 25
@@ -58,7 +58,7 @@ function initialize() {
 
   terra.registerCreature({
     type: 'creature3',
-    color: creatureColor,
+    color: creatureColor3,
     maxEnergy: 50,
     initialEnergy: 8,
     size: 25
@@ -66,7 +66,7 @@ function initialize() {
 
   terra.registerCreature({
     type: 'creature4',
-    color: creatureColor,
+    color: creatureColor4,
     maxEnergy: 100,
     initialEnergy: 20,
     size: 20
