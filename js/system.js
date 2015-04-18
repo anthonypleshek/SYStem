@@ -37,20 +37,10 @@ function initialize() {
   });
 
   system.grid = system.makeGridWithDistribution([['plant', 50]]);
-  system.animate(1);
-  system.canvas.addEventListener('mousemove', function(event) {
-    var coords = relativeCoords(system.canvas, event);
-
-    // drawUserOptions();
-
-    // //Highlight cell hovered over in grid
-    // var ctx = system.canvas.getContext("2d");
-    // ctx.rect(system.cellSize*Math.round(coords.x/system.cellSize),system.cellSize*Math.round(coords.y/system.cellSize),system.cellSize,system.cellSize);
-    // ctx.fillStyle="red";
-    // ctx.fill();
-
-  });
   updateCreatureCounter();
+
+  system.draw();
+
   system.canvas.addEventListener('click', selectCreatureLocations);
 }
 
@@ -76,7 +66,6 @@ function displayStartButton(){
 
 
 function selectCreatureLocations(event) {
-
   if(getRemainingCreatures() > 0){
     var coords = relativeCoords(system.canvas, event);
     var creatureLoc = {};
@@ -135,6 +124,4 @@ function start() {
   system.grid = system.makeGrid(grid);
 
   system.animate(300);
-
-  // system.canvas.addEventListener('click', selectCreatureLocations);
 }
