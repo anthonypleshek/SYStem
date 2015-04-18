@@ -113,8 +113,7 @@ function selectCreatureLocations(event) {
 
     drawUserOptions();
   }
-
-  if(getRemainingCreatures() == 0) {
+  if(getRemainingCreatures() == 0){
     updatePrompt("Start the game already!")
     displayStartButton();
   }

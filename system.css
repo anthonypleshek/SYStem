@@ -35,7 +35,6 @@
   left: 0;
   top:400;
   margin-top: 10px;
-
 }
 
 #controls img{
@@ -48,6 +47,9 @@
 }
 
 .counter{
-
-
+  border-radius: 25px;
+  border: 2px solid #8AC007;
+  padding: 20px;
+  width: 400px;
+  height: 50px;
 }
