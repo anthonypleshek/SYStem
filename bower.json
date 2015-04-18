@@ -1,0 +1,20 @@
+{
+  "name": "SYStem",
+  "version": "0.1",
+  "homepage": "https://github.com/anthonypleshek/SYStem",
+  "authors": [
+    "anthonypleshek",
+    "souptyrant"
+  ],
+  "description": "Cellular automation game. Don't die.",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bower_components"
+  ],
+  "dependencies": {
+    "terra": "~1.5.2"
+  }
+}

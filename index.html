@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <script src="bower_components/terra/dist/terra.js"></script>
+  </head>
+  <body>
+    <script>
+      var system = new terra.Terrarium(50, 50, {
+        trails: 0.9,
+        periodic: true,
+        background: [22, 22, 22]
+      });
+
+      terra.registerCreature({
+        type: 'plant',
+        color: [0, 120, 0],
+        size: 10,
+        initialEnergy: 5,
+        maxEnergy: 20,
+        wait: function() {
+          // photosynthesis :)
+          this.energy += 1;
+        },
+        move: false,
+        reproduceLv: 0.65
+      });
+
+      terra.registerCreature({
+        type: 'brute',
+        color: [0, 255, 255],
+        maxEnergy: 50,
+        initialEnergy: 10,
+        size: 20
+      });
+
+      terra.registerCreature({
+        type: 'bully',
+        color: [241, 196, 15],
+        initialEnergy: 20,
+        reproduceLv: 0.6,
+        sustainability: 3
+      });
+
+      system.grid = system.makeGridWithDistribution([['plant', 50], ['brute', 5], ['bully', 5]]);
+      system.animate();
+    </script>
+  </body>
+</html>
