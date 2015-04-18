@@ -1,0 +1,50 @@
+#system{
+  /*position: absolute;
+  top:150;
+  left:100;*/
+}
+
+#grid{
+  position: absolute;
+  top: 0;
+  left:0;
+}
+
+#systemHeader{
+  height:100px;
+  width:100%;
+
+}
+
+#systemContent{
+  position: relative;
+  min-width:700px;
+  max-width: 1000px;
+  margin-top:25px;
+}
+
+#information{
+  position: absolute;
+  left: 500;
+  top: 0;
+  color: green;
+  font-size:300%;
+  margin-left:10px;
+}
+
+#controls{
+  position: absolute;
+  left: 0;
+  top:500;
+  margin-top: 10px;
+}
+
+#controls img{
+  height: 50px;
+  width: 50px;
+}
+
+.counter{
+
+
+}

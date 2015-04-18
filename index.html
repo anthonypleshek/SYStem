@@ -3,8 +3,39 @@
     <script src="bower_components/terra/dist/terra.js"></script>
     <script src="js/utility.js"></script>
     <script src="js/system.js"></script>
+    <link rel="stylesheet" type="text/css" href="system.css">
   </head>
   <body onload="initialize()">
-    <button onclick="start()">START</button>
+    <div id="header">
+      <img src="content\SYStemLogo.png"></img>
+    </div>
+
+  <div id="systemContent">
+
+    <div id="prompter">Place Creatures</div>
+
+    <div id="gridContainer">
+      <div id="grid"></div>
+      <!-- This is where the grid is inserted -->
+    </div>
+
+  <div id="information">
+
+      <div class="counter">
+        <label>Plants: </label>
+        <span id="plantCounter">10</span>
+      </div>
+
+
+      <div class="counter">
+        <label>Creatures: </label>
+        <span id="creatureCounter">10</span>
+      </div>
+    </div>
+
+  <div id="controls">
+   <button onclick="start()" src="content\go.jpg">START</button>
+  </div>
+    </div>
   </body>
 </html>
