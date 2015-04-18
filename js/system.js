@@ -36,6 +36,38 @@ function initialize() {
     size: 20
   });
 
+  terra.registerCreature({
+    type: 'creature1',
+    color: creatureColor,
+    maxEnergy: 70,
+    initialEnergy: 20,
+    size: 12
+  });
+
+  terra.registerCreature({
+    type: 'creature2',
+    color: creatureColor,
+    maxEnergy: 20,
+    initialEnergy: 7,
+    size: 25
+  });
+
+  terra.registerCreature({
+    type: 'creature3',
+    color: creatureColor,
+    maxEnergy: 50,
+    initialEnergy: 8,
+    size: 25
+  });
+
+  terra.registerCreature({
+    type: 'creature4',
+    color: creatureColor,
+    maxEnergy: 100,
+    initialEnergy: 20,
+    size: 20
+  });
+
   system.grid = system.makeGridWithDistribution([['plant', 50]]);
   updateCreatureCounter();
 
@@ -115,7 +147,7 @@ function start() {
 
   for(idx in creatureLocs) {
     var loc = creatureLocs[idx];
-    grid[loc.y][loc.x] = 'creature';
+    grid[loc.y][loc.x] = 'creature1';
   }
 
   //Clear creatureLocs
