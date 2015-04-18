@@ -1,18 +1,21 @@
 var system = null;
-var userCreatureLocs = [];
+var creatureLocs = [];
 var creatureNumber = 5;
+var creatureColor = [0,255,255];
+var plantColor = [0,120,0];
 
 function initialize() {
-  system = new terra.Terrarium(50, 50, {
+  system = new terra.Terrarium(40, 40, {
+    cellSize: 10,
     id: "system",
-    trails: 0.9,
-    periodic: true,
+    trails: 0.2,
+    periodic: false,
     background: [22, 22, 22]
   });
 
   terra.registerCreature({
     type: 'plant',
-    color: [0, 120, 0],
+    color: plantColor,
     size: 10,
     initialEnergy: 5,
     maxEnergy: 20,
@@ -26,7 +29,7 @@ function initialize() {
 
   terra.registerCreature({
     type: 'creature',
-    color: [0, 255, 255],
+    color: creatureColor,
     maxEnergy: 50,
     initialEnergy: 10,
     size: 20
@@ -37,33 +40,58 @@ function initialize() {
   system.canvas.addEventListener('mousemove', function(event) {
     var coords = relativeCoords(system.canvas, event);
 
-    //Highlight cell hovered over in grid
-    var ctx = system.canvas.getContext("2d");
-    ctx.rect(system.cellSize*Math.round(coords.x/system.cellSize),system.cellSize*Math.round(coords.y/system.cellSize),system.cellSize,system.cellSize);
-    ctx.fillStyle="red";
-    ctx.fill();
+    // drawUserOptions();
+
+    // //Highlight cell hovered over in grid
+    // var ctx = system.canvas.getContext("2d");
+    // ctx.rect(system.cellSize*Math.round(coords.x/system.cellSize),system.cellSize*Math.round(coords.y/system.cellSize),system.cellSize,system.cellSize);
+    // ctx.fillStyle="red";
+    // ctx.fill();
+
   });
 
   system.canvas.addEventListener('click', function(event) {
     var coords = relativeCoords(system.canvas, event);
     var creatureLoc = {};
-    creatureLoc.x = Math.round(coords.x/system.cellSize);
-    creatureLoc.y = Math.round(coords.y/system.cellSize);
+    creatureLoc.x = Math.floor(coords.x/system.cellSize);
+    creatureLoc.y = Math.floor(coords.y/system.cellSize);
 
-    userCreatureLocs.push(creatureLoc);
+    creatureLocs.push(creatureLoc);
+
+    drawUserOptions();
   });
 }
 
 function drawUserOptions() {
-  //Clear canvas
-  system.canvas.getContext("2d").clearRect(0, 0, system.canvas.width, system.canvas.height);
 
-  for(loc in creatureLocs) {
-    
+  var ctx = system.canvas.getContext("2d");
+
+  for(idx in creatureLocs) {
+    var loc = creatureLocs[idx];
+    ctx.rect(system.cellSize*loc.x,system.cellSize*loc.y,system.cellSize,system.cellSize);
+    ctx.fillStyle="rgb("+creatureColor[0]+","+creatureColor[1]+","+creatureColor[2]+")";
+    ctx.fill();
   }
 }
 
 function start() {
-  system.grid = system.makeGridWithDistribution([['plant', 50], ['brute', 5], ['bully', 5]]);
-  system.animate();
+  var grid = system.grid;
+  for(row in system.grid) {
+    for(col in system.grid[row]) {
+      var val = system.grid[row][col];
+      if(val != false) {
+        val = 'plant';
+      }
+      grid[row][col] = val;
+    }
+  }
+
+  for(idx in creatureLocs) {
+    var loc = creatureLocs[idx];
+    grid[loc.y][loc.x] = 'creature';
+  }
+
+  system.grid = system.makeGrid(grid);
+
+  system.animate(4000);
 }
