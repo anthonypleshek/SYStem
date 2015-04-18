@@ -50,16 +50,18 @@ function initialize() {
 
   });
 
-  system.canvas.addEventListener('click', function(event) {
-    var coords = relativeCoords(system.canvas, event);
-    var creatureLoc = {};
-    creatureLoc.x = Math.floor(coords.x/system.cellSize);
-    creatureLoc.y = Math.floor(coords.y/system.cellSize);
+  system.canvas.addEventListener('click', selectCreatureLocations);
+}
 
-    creatureLocs.push(creatureLoc);
+function selectCreatureLocations(event) {
+  var coords = relativeCoords(system.canvas, event);
+  var creatureLoc = {};
+  creatureLoc.x = Math.floor(coords.x/system.cellSize);
+  creatureLoc.y = Math.floor(coords.y/system.cellSize);
 
-    drawUserOptions();
-  });
+  creatureLocs.push(creatureLoc);
+
+  drawUserOptions();
 }
 
 function drawUserOptions() {
@@ -75,6 +77,8 @@ function drawUserOptions() {
 }
 
 function start() {
+  system.canvas.removeEventListener('click', selectCreatureLocations);
+
   var grid = system.grid;
   for(row in system.grid) {
     for(col in system.grid[row]) {
@@ -91,7 +95,12 @@ function start() {
     grid[loc.y][loc.x] = 'creature';
   }
 
+  //Clear creatureLocs
+  creatureLocs = [];
+
   system.grid = system.makeGrid(grid);
 
-  system.animate(4000);
+  system.animate(300);
+
+  // system.canvas.addEventListener('click', selectCreatureLocations);
 }
