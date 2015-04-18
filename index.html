@@ -12,8 +12,6 @@
 
   <div id="systemContent">
 
-    <div id="prompter">Place Creatures</div>
-
     <div id="gridContainer">
       <div id="grid"></div>
       <!-- This is where the grid is inserted -->
@@ -21,20 +19,20 @@
 
   <div id="information">
 
+    <div class="counter">
+      <label>Status: </label>
+      <span id="prompter">Place Creatures</span>
+    </div>
+    <br/>
       <div class="counter">
-        <label>Plants: </label>
-        <span id="plantCounter">10</span>
-      </div>
-
-
-      <div class="counter">
-        <label>Creatures: </label>
-        <span id="creatureCounter">10</span>
+        <label>Remaining Creatures: </label>
+        <span id="creatureCounter"></span>
       </div>
     </div>
 
   <div id="controls">
-   <button onclick="start()" >START</button>
+   <button id="startbtn" onclick="start()" >START</button>
+   <button id="resetbtn" onclick="reset()" >RESET</button>
   </div>
     </div>
   </body>

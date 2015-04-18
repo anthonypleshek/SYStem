@@ -13,7 +13,6 @@
 #systemHeader{
   height:100px;
   width:100%;
-
 }
 
 #systemContent{
@@ -28,22 +27,25 @@
   left: 500;
   top: 0;
   color: green;
-  font-size:300%;
-  margin-left:10px;
+  font-size:200%;
 }
 
 #controls{
   position: absolute;
   left: 0;
-  top:500;
+  top:400;
   margin-top: 10px;
+
 }
 
 #controls img{
-  height: 50px;
+  height: 20px;
   width: 50px;
 }
 
+#startbtn{
+  visibility: hidden;
+}
 
 .counter{
 

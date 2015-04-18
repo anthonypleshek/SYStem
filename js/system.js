@@ -10,7 +10,8 @@ function initialize() {
     id: "system",
     trails: 0.2,
     periodic: false,
-    background: [22, 22, 22]
+    background: [22, 22, 22],
+    insertAfter: document.getElementById('grid')
   });
 
   terra.registerCreature({
@@ -49,19 +50,48 @@ function initialize() {
     // ctx.fill();
 
   });
-
+  updateCreatureCounter();
   system.canvas.addEventListener('click', selectCreatureLocations);
 }
 
+function updateCreatureCounter(){
+  document.getElementById('creatureCounter').innerHTML = getRemainingCreatures();
+}
+
+function getRemainingCreatures(){
+  return creatureNumber - creatureLocs.length;
+}
+
+function updatePrompt(message){
+  document.getElementById('prompter').innerHTML = message;
+}
+
+function hideStartButton(){
+  document.getElementById('startbtn').style.visibility = "hidden";
+}
+
+function displayStartButton(){
+  document.getElementById('startbtn').style.visibility = "visible";
+}
+
+
 function selectCreatureLocations(event) {
-  var coords = relativeCoords(system.canvas, event);
-  var creatureLoc = {};
-  creatureLoc.x = Math.floor(coords.x/system.cellSize);
-  creatureLoc.y = Math.floor(coords.y/system.cellSize);
 
-  creatureLocs.push(creatureLoc);
+  if(getRemainingCreatures() > 0){
+    var coords = relativeCoords(system.canvas, event);
+    var creatureLoc = {};
+    creatureLoc.x = Math.floor(coords.x/system.cellSize);
+    creatureLoc.y = Math.floor(coords.y/system.cellSize);
 
-  drawUserOptions();
+    creatureLocs.push(creatureLoc);
+    updateCreatureCounter();
+
+    drawUserOptions();
+  }
+  else{
+    updatePrompt("Start the game already!")
+    displayStartButton();
+  }
 }
 
 function drawUserOptions() {
@@ -75,6 +105,10 @@ function drawUserOptions() {
     ctx.fill();
   }
 }
+
+function reset() {
+  location.reload();
+  }
 
 function start() {
   system.canvas.removeEventListener('click', selectCreatureLocations);
