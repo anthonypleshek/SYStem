@@ -2,6 +2,10 @@ var system = null;
 var creatureLocs = [];
 var creatureNumber = 5;
 var creatureColor = [0,255,255];
+var creatureColor1 = [255,0,255];
+var creatureColor2 = [0,0,255];
+var creatureColor3 = [255,255,255];
+var creatureColor4 = [100,200,255];
 var plantColor = [0,120,0];
 
 function initialize() {
@@ -109,7 +113,7 @@ function selectCreatureLocations(event) {
 
     drawUserOptions();
   }
-  
+
   if(getRemainingCreatures() == 0) {
     updatePrompt("Start the game already!")
     displayStartButton();
@@ -148,7 +152,8 @@ function start() {
 
   for(idx in creatureLocs) {
     var loc = creatureLocs[idx];
-    grid[loc.y][loc.x] = 'creature1';
+    // grid[loc.y][loc.x] = 'creature4';
+    grid[loc.y][loc.x] = document.getElementById('creatureChoice').value;
   }
 
   //Clear creatureLocs
